@@ -2,7 +2,7 @@
 <h3 align="center">A passionate Full-stack Developer from Uganda</h3>
 
 <p align="left"> <a href="https://twitter.com/asiimwedel" target="blank"><img src="https://img.shields.io/twitter/follow/asiimwedel?logo=twitter&style=for-the-badge" alt="asiimwedel" /></a> </p>
-
+TXT
 - 🔭 I’m currently working at [Sofdas Technologies](https://www.sofdas.com/)
 
 - 🌱 I’m currently learning **Laravel, python**
