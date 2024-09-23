@@ -14,6 +14,7 @@ TXT
 ### Blogs posts
 <!-- BLOG-POST-LIST:START -->
 <!-- BLOG-POST-LIST:END -->
+<p>TXT</p>
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
