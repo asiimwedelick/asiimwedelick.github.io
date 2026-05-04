@@ -2,13 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio of Asiimwe Delick, a passionate web developer and designer.">
-    <title>Asiimwe Delick Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
-    <style type="text/css">
-        /* General Reset */
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Asiimwe Delick — Senior Software Engineer specializing in ERP, web systems, and full-stack development. View portfolio, projects, and experience.">
+    <meta name="author" content="Asiimwe Delick">
+    <title>Asiimwe Delick | Senior Software Engineer & Full-Stack Developer</title>
+    
+    <!-- Google Fonts + modern Font Awesome 6 (free) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
         * {
             margin: 0;
             padding: 0;
@@ -16,561 +19,606 @@
         }
 
         body {
-            font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #343a40;
-            background: #343a40;
-            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+            line-height: 1.5;
+            scroll-behavior: smooth;
         }
 
-        /* Container */
         .container {
-            width: 90%;
+            max-width: 1280px;
             margin: 0 auto;
-            max-width: 1200px;
+            padding: 0 2rem;
         }
 
-        /* Header */
-        header {
-            background: #343a40;
-            color: #fff;
-            padding: 1rem 0;
-            text-align: center;
+        /* typography */
+        h1, h2, h3, h4 {
+            font-weight: 600;
+            letter-spacing: -0.02em;
         }
 
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        header p {
-            font-size: 1.2rem;
-        }
-
-        nav {
-            margin-top: 1rem;
-        }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 1rem;
-            margin: 0 1rem;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #17a2b8;
-        }
-
-        /* Hero Section */
-        .hero {
-              /* background: url('software-engineering-banner2400.jpg') no-repeat center center/cover; */
-    height: 70vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    text-align: center;
-    padding: 0 1rem;
-        }
-
-
-        .profile-img {
-    width: 150px; /* Adjust size */
-    height: 150px;
-    border-radius: 50%;
-    border: 5px solid #fff;
-    object-fit: cover;
-    margin-bottom: 1rem;
-}
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-
-        .hero a {
-             display: inline-block;
-    padding: 0.75rem 1.5rem;
-    background: #17a2b8;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    transition: background 0.3s;
-        }
-
-        .hero a:hover {
-            background: #138496;
-        }
-
-        /* Sections */
-        section {
-            padding: 3rem 1rem;
-        }
-
-        section h2 {
-            text-align: center;
+        h2 {
             font-size: 2rem;
             margin-bottom: 1rem;
-            color: #555;
         }
 
-        section p {
+        section {
+            padding: 5rem 0;
+        }
+
+        /* header / navigation */
+        .site-header {
+            background: #0f172a;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(0px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+
+        .logo h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff, #94a3b8);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 0.25rem;
+        }
+
+        .nav-links a:hover {
+            color: white;
+            border-bottom-color: #38bdf8;
+        }
+
+        /* hero */
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 5rem 0 6rem;
             text-align: center;
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-            color: #666;
         }
 
-        /* About Section */
-        #about {
-            background: #fff;
+        .hero-content {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
         }
 
-     #projects {
-    background: #343a40;
-    padding: 3rem 1rem;
-}
-
-#projects h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: #fff;
-}
-
-.projects-grid {
-    display: grid;
-    gap: 2rem;
-    grid-template-columns: 1fr;
-}
-
-@media (min-width: 768px) {
-    .projects-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-.project {
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
-    text-align: center;
-}
-
-.project img {
-    max-width: 100%;
-    border-radius: 8px;
-}
-
-.project h3 {
-    font-size: 1.5rem;
-    color: black;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-}
-
-.project p {
-    font-size: 1rem;
-    color: black;
-    margin-bottom: 1rem;
-}
-
-.project a {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    background: #17a2b8;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    margin-top: 1rem;
-}
-
-.project a:hover {
-    background: #138496;
-}
-
-
-        /* Skills Section */
-        #skills {
-            background: #343a40;
-
-        }
-        #skills h2{
-            color: #fff;
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #38bdf8;
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.3);
+            margin-bottom: 1.5rem;
         }
 
-        .skills-list {
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #f1f5f9, #a5f3fc);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero-tagline {
+            font-size: 1.15rem;
+            color: #cbd5e1;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #0ea5e9;
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+            box-shadow: 0 6px 14px rgba(14,165,233,0.25);
+        }
+
+        .btn-primary:hover {
+            background: #0284c7;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(14,165,233,0.4);
+        }
+
+        /* About, cards, grids */
+        .about-text {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 28px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.03);
+            border: 1px solid #e9eef3;
+        }
+
+        .about-text p {
+            font-size: 1rem;
+            color: #1e293b;
+            margin-bottom: 1.25rem;
+            line-height: 1.6;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: #0f172a;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title h2:after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 4px;
+            background: #0ea5e9;
+            margin: 0.6rem auto 0;
+            border-radius: 4px;
+        }
+
+        /* experience + projects grid */
+        .grid-2col {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 1.8rem;
+            transition: all 0.25s;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+            border: 1px solid #eef2f8;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
+            border-color: #cbd5e1;
+        }
+
+        .exp-company {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: #0f172a;
+            margin-bottom: 0.3rem;
+        }
+
+        .exp-company a {
+            color: #0f172a;
+            text-decoration: none;
+            border-bottom: 1px dotted #94a3b8;
+        }
+
+        .exp-company a:hover {
+            color: #0ea5e9;
+        }
+
+        .exp-date {
+            font-size: 0.85rem;
+            color: #475569;
+            margin-bottom: 1rem;
+            display: inline-block;
+            background: #f1f5f9;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+        }
+
+        .project-img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin-bottom: 1.2rem;
+            background: #eef2ff;
+            border: 1px solid #e2e8f0;
+        }
+
+        .skill-badge {
+            background: #e0f2fe;
+            color: #0369a1;
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.1s;
+        }
+
+        .skills-cloud {
             display: flex;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 0.7rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        /* education custom */
+        .education-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
             justify-content: center;
         }
 
-        .skill {
-            background: #17a2b8;
-            color: #fff;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 1rem;
-        }
-
-
-        /* Contact Section */
-        #contact {
-            background: #f8f9fa;
-        }
-
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .contact-form input,
-        .contact-form textarea,
-        .contact-form button {
-            width: 100%;
-            padding: 0.75rem;
-            margin-bottom: 1rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-
-        .contact-form button {
-            background: #17a2b8;
-            color: #fff;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .contact-form button:hover {
-            background: #138496;
-        }
-
-        /* Footer */
-        footer {
-            background: #343a40;
-            color: #fff;
+        .edu-card {
+            background: white;
+            border-radius: 24px;
+            padding: 2rem;
             text-align: center;
-            padding: 1rem 0;
+            flex: 1;
+            min-width: 240px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+            border: 1px solid #eef2f8;
         }
 
-        footer p {
-            font-size: 0.9rem;
+        /* contact */
+        .contact-section {
+            background: white;
+            border-radius: 2rem;
+            box-shadow: 0 25px 40px -12px rgba(0,0,0,0.05);
         }
 
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
 
-        #about {
-    background: #fff;
-    padding: 3rem 1rem;
-    text-align: center;
-}
+        .social-links {
+            display: flex;
+            gap: 1.8rem;
+            margin-top: 1rem;
+        }
 
-#about h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: #555;
-}
+        .social-links a {
+            color: #334155;
+            font-size: 1.7rem;
+            transition: color 0.2s;
+        }
 
-#about p {
-    font-size: 1.1rem;
-    color: #666;
-    margin-bottom: 1.5rem;
-    line-height: 1.6;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
+        .social-links a:hover {
+            color: #0ea5e9;
+        }
 
-#experience {
-    background: #343a40;
-    padding: 3rem 1rem;
-    text-align: center;
-}
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.85rem;
+        }
 
-#experience h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: #fff;
-}
-
-.experience-grid {
-    display: grid;
-    gap: 2rem;
-    grid-template-columns: 1fr;
-}
-
-@media (min-width: 768px) {
-    .experience-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-.experience-item {
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
-    text-align: left;
-}
-
-.experience-item h3 {
-    font-size: 1.5rem;
-    color: #333;
-    margin-bottom: 0.5rem;
-}
-
-.experience-duration {
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 1rem;
-}
-
-.experience-item p {
-    font-size: 1rem;
-    color: #555;
-    line-height: 1.6;
-}
-
-
-#education {
-    background: black;
-    padding: 3rem 1rem;
-}
-
-#education h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: #fff;
-}
-
-.education-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
-}
-
-.education-item {
-    background: #f8f9fa;
-    border-radius: 8px;
-    padding: 2.5rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 350px;
-    text-align: center;
-}
-
-.education-item h3 {
-    font-size: 1.5rem;
-    color: #333;
-    margin-bottom: 0.5rem;
-}
-
-.education-item p {
-    font-size: 1rem;
-    color: #555;
-}
-
-
-
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            section {
+                padding: 3rem 0;
+            }
+            .grid-2col {
+                grid-template-columns: 1fr;
+            }
+            .container {
+                padding: 0 1.2rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Asiimwe Delick</h1>
-        <!-- <p>Crafting Beautiful Websites</p> -->
-        <nav>
+
+<header class="site-header">
+    <div class="header-container">
+        <div class="logo">
+            <h1>ASIIMWE DELICK</h1>
+        </div>
+        <nav class="nav-links">
             <a href="#about">About</a>
             <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
             <a href="#skills">Skills</a>
             <a href="#contact">Contact</a>
         </nav>
-    </header>
+    </div>
+</header>
 
-    <section class="hero">
-    <img src="1_7_pBBFFbA6LPV0TI76vsoQ.jpg" alt="Asiimwe Delick" class="profile-img">
-    <h1>Hello, I'm Asiimwe Delick</h1>
-   <p style="color: #fff; max-width: 700px;">
-        I design and develop modern, user-focused systems and websites with passion and precision. My expertise spans various solutions, including ERP systems, accounting platforms, Point Of sales systems, inventory management systems, human resource management tools, and brand-centric websites. Let’s build something impactful together.
-    </p>
-    <a href="#projects">View My Work</a>
-</section>
-
-<section id="about">
-    <h2>About Me</h2>
-    <p>
-        I am a dedicated software developer from Uganda, with a strong focus on creating responsive and accessible systems using modern technologies. My journey from a village upbringing to becoming a proficient developer has equipped me with a unique perspective and a deep commitment to excellence in every project I undertake.
-    </p>
-    <p>
-        My expertise encompasses a wide range of solutions, including Enterprise Resource Planning (ERP) systems, accounting platforms, inventory management systems, human resource management tools, and brand-centric websites. I am passionate about leveraging technology to solve real-world problems and enhance user experiences.
-    </p>
-    <p>
-        In addition to my technical skills, I have experience leading developer communities, notably serving as a Developer Student Clubs (DSC) lead, where I facilitated learning and collaboration among aspiring developers. This role honed my leadership abilities and reinforced my dedication to community-driven growth in the tech industry.
-    </p>
-</section>
-
-
-
-<section id="experience">
-    <h2>Work Experience</h2>
-    <div class="experience-grid">
-        <div class="experience-item">
-            <h3>Senior Software Engineer - <a href="https://www.sofdas.com">Sofdas Technologies Ltd</a></h3>
-            <p class="experience-duration">Jul 2024 - Present</p>
-            <p>
-                Leading the development team in creating innovative software solutions for businesses, with a focus on automation and analytics. Mentoring junior developers and streamlining development pipelines for faster delivery.
-            </p>
-        </div>
-        <div class="experience-item">
-            <h3>Database Administrator - <a href="https://www.mildmay.or.ug">Mildmay Uganda</a></h3>
-            <p class="experience-duration">Feb 2023 - Jun 2024</p>
-            <p>
-                Managed and optimized relational databases for healthcare systems, ensuring data integrity and compliance with industry standards. Automated backup procedures, reducing downtime by 25%.
-            </p>
-        </div>
-        <div class="experience-item">
-            <h3>Software Developer - <a href="https://datateam.co.ug/"> Data Team Uganda Limited</a></h3>
-            <p class="experience-duration">March 2022 - Jan 2023</p>
-            <p>
-                Played a pivotal role in developing tailored ERP solutions for clients, focusing on scalability and performance optimization. Spearheaded the implementation of accounting systems, improving client operational efficiency by over 20%.
-            </p>
-        </div>
-        <div class="experience-item">
-            <h3>Assistant IT Manager - <a href="https://www.sescotyres.com">Sesco Tyres</a></h3>
-            <p class="experience-duration">March 2020 - March 2022</p>
-            <p>
-                Supervised IT operations, ensuring seamless system performance and data security. Implemented cost-effective solutions, improving productivity and reducing downtime by 25%.
-            </p>
-        </div>
+<!-- Hero Section with professional tone -->
+<section class="hero">
+    <div class="hero-content">
+        <img src="1_7_pBBFFbA6LPV0TI76vsoQ.jpg" alt="Asiimwe Delick portrait" class="profile-img" onerror="this.src='https://via.placeholder.com/150?text=AD'">
+        <h1>Architecting Digital Solutions</h1>
+        <div class="hero-tagline">
+Full-Stack Developer — Specializing in SEO-Optimized Websites, Marketing Funnels & Scalable Web Systems        </div>
+        <a href="#projects" class="btn-primary"><i class="fas fa-arrow-down"></i> Explore portfolio</a>
     </div>
 </section>
 
-
-
-<section id="education">
-    <h2>Education Background</h2>
-    <div class="education-list">
-        <div class="education-item">
-            <h3>Bachelor of Information Technology</h3>
-            <p><strong>Ndejje University</strong></p>
-            <p>Completed a comprehensive program focused on the fundamentals of information technology, programming, and system design.</p>
+<div class="container">
+    <!-- About section refined -->
+    <section id="about">
+        <div class="section-title">
+            <h2>About Me</h2>
         </div>
-        <div class="education-item">
-            <h3>Advanced Certificate of Education</h3>
-            <p><strong>Cream Land High School</strong></p>
-            <p>Specialized in advanced mathematics, computer science, and physics to build a strong foundation for further studies in technology.</p>
-        </div>
-        <div class="education-item">
-            <h3>O-Level Certificate</h3>
-            <p><strong>Buranga Senior Secondary School</strong></p>
-            <p>Studied a broad range of subjects including English, Mathematics, and Sciences, laying the groundwork for advanced studies.</p>
-        </div>
-    </div>
-</section>
+       <div class="about-text">
+    <p><strong>Asiimwe Delick</strong> — I'm a software engineer from Uganda focused on building practical, scalable systems that solve real business problems. I turn requirements into functional, maintainable applications that help businesses operate more efficiently.</p>
 
+    <p>My work mainly involves <strong>business management systems</strong> such as inventory tools, POS systems, basic ERP modules, and custom web applications tailored to real operational needs. I also build <strong>marketing funnels, modern websites</strong>, and web platforms with a focus on usability, performance, and <strong>SEO</strong>.</p>
 
+    <p>I enjoy solving real-world problems with clean, maintainable code and building systems that are simple for users but powerful in functionality.</p>
+</div>
+    </section>
 
+<div style="text-align: center; margin-top: 1.5rem;">
+   <a href="https://calendly.com/delasiimwe/30min?redirect_url=https://asiimwedelick.github.io/#thankyou" target="_blank" class="btn-primary" style="background: #0f172a;">
+        <i class="fas fa-calendar-alt"></i> Book a free 30 min call
+    </a>
+</div>
 
-
+    <!-- Projects section upgraded with imagery + descriptions -->
     <section id="projects">
-    <h2>Projects Completed</h2>
-    <div class="projects-grid">
-        <!-- Website Projects -->
-        <div class="project">
-            <img src="sesco.png" alt="Sesco Tyres Website">
-            <h3>Sesco Tyres Website</h3>
-            <p>A dynamic, responsive website for Sesco Tyres, featuring product catalogs, online inquiries, and integrated customer services.</p>
-            <a href="https://www.sescotyres.com" target="_blank">View Project</a>
+        <div class="section-title">
+            <h2>Featured Projects</h2>
         </div>
-        <div class="project">
-            <img src="stmonica.png" alt="St Monica Junior School Website">
-            <h3>St Monica Junior School Website</h3>
-            <p>The official website of St Monica Junior School, showcasing school information, events, and an interactive parent portal.</p>
-            <a href="http://stmonicakasaje.com" target="_blank">View Project</a>
-        </div>
-        <div class="project">
-            <img src="trion.png" alt="Trion Safaris Website">
-            <h3>Trion Safaris Website</h3>
-            <p>A travel website for Trion Safaris, designed for easy booking and showcasing tour packages and destinations.</p>
-            <a href="http://trionsafaris.com" target="_blank">View Project</a>
-        </div>
-        <div class="project">
-            <img src="roshana.png" alt="Roshana Enterprises Website">
-            <h3>Roshana Enterprises Website</h3>
-            <p>An e-commerce platform for Roshana Enterprises, featuring a product catalog, online payment integration, and customer reviews.</p>
-            <a href="#" target="_blank">View Project</a>
-        </div>
+        <div class="grid-2col">
+            <!-- Website projects -->
 
-        <!-- Systems Projects -->
-        <div class="project">
-            <h3>Freightbird - Clearing and Forwarding System</h3>
-            <p>Developed an end-to-end clearing and forwarding system for Freightbird, integrating logistics management, invoicing, and tracking functionalities.</p>
-        </div>
-        <div class="project">
- <img src="hms.png" alt="Hotel Management System (ERP)">
-            <h3>Hotel Management System (ERP)</h3>
-            <p>Built a comprehensive ERP system for hotel management, including modules for restaurant, bar, accommodation, gym, HR, and accounting management.</p>
-        </div>
-        <div class="project">
-            <img src="nono.png" alt="Human Resource Management System">
-            <h3>Vitalis Sync - Hospital Management System (ERP)</h3>
-            <p>Developed an integrated ERP system for hospital management, handling patient records, billing, appointments, and inventory management.</p>
-
-        </div>
-        <div class="project">
-               <img src="hrm9.png" alt="Human Resource Management System">
-            <h3>HRM-9 - Human Resource Management System</h3>
-            <p>Created a real-time integrated HRM system for managing employee records, payroll, and attendance, including biometric integration for attendance tracking.</p>
-        </div>
-    </div>
-</section>
-
-<section id="skills">
-    <h2>Skills</h2>
-    <div class="skills-list">
-        <span class="skill">HTML</span>
-        <span class="skill">CSS</span>
-        <span class="skill">JavaScript</span>
-        <span class="skill">React</span>
-        <span class="skill">Node.js</span>
-        <span class="skill">Responsive Design</span>
-        <span class="skill">PHP</span>
-        <span class="skill">CodeIgniter</span>
-        <span class="skill">C</span>
-        <span class="skill">Java</span>
-        <span class="skill">Kotlin</span>
-        <span class="skill">.NET</span>
-        <span class="skill">AJAX</span>
-        <span class="skill">Python</span>
-    </div>
-</section>
-
-<section id="contact">
-    <h2>Contact Me</h2>
-    <p>If you have a project in mind or want to collaborate, feel free to reach out!</p>
-    <p>Email me at: <a href="mailto:delasiimwe@gmail.com">delasiimwe@gmail.com</a></p>
     
-    <h3>Follow me on Social Media:</h3>
-    <p>
-        <a href="https://twitter.com/asiimwedel" target="_blank">Twitter</a> | 
-        <a href="https://www.linkedin.com/in/asiimwe-delick-806808172/" target="_blank">LinkedIn</a> 
-        <a href="https://www.facebook.com/asiimwe" target="_blank">Facebook</a>
-    </p>
-</section>
 
-    <footer>
-        <p>&copy; 2024 Asiimwe Delick. All rights reserved.</p>
-    </footer>
+          <div class="card">
+    <img src="datateam.png" alt="Data Team Uganda" class="project-img" onerror="this.style.display='none'">
+    <h3>Data Team Uganda</h3>
+    <p>Corporate website with a structured product catalog, inquiry system, and customer-focused layout. Designed to improve visibility and streamline client inquiries for faster lead conversion.</p>
+    <a href="https://www.datateam.co.ug/" target="_blank" class="btn-primary" style="padding:0.4rem 1.2rem; font-size:0.85rem;">
+        <i class="fas fa-external-link-alt"></i> Live demo
+    </a>
+</div>
+
+<div class="card">
+    <img src="rukungiridistrict.png" alt="Rukungiri District Website" class="project-img" onerror="this.style.display='none'">
+    <h3>Rukungiri District Local Government Website</h3>
+    <p>Government information platform built to improve accessibility of public services, announcements, and administrative information with a clean, mobile-friendly interface.</p>
+    <a href="https://rukungiri.go.ug/" target="_blank" class="btn-primary" style="padding:0.4rem 1.2rem; font-size:0.85rem;">
+        <i class="fas fa-external-link-alt"></i> Live demo
+    </a>
+</div>
+
+<div class="card">
+    <img src="yopersh.png" alt="Your Personal Shopper" class="project-img" onerror="this.style.display='none'">
+    <h3>Your Personal Shopper</h3>
+<p>Personal shopping service platform featuring product listings, customer inquiries, and a simple ordering flow to help users request and manage purchases efficiently.</p>    <a href="https://shopwithyopersh.com/" target="_blank" class="btn-primary" style="padding:0.4rem 1.2rem; font-size:0.85rem;">
+        <i class="fas fa-external-link-alt"></i> Live demo
+    </a>
+</div>
+
+
+            <div class="card">
+                <img src="sesco.png" alt="Sesco Tyres" class="project-img" onerror="this.style.display='none'">
+                <h3>Sesco Tyres Website</h3>
+                <p>Modern responsive website with product catalog, online inquiry system, and integrated customer portal. Improved lead generation by 40%.</p>
+                <a href="https://www.sescotyres.com" target="_blank" class="btn-primary" style="padding:0.4rem 1.2rem; font-size:0.85rem;"><i class="fas fa-external-link-alt"></i> Live demo</a>
+            </div>
+            <div class="card">
+                <img src="stmonica.png" alt="St Monica School" class="project-img" onerror="this.style.display='none'">
+                <h3>St Monica Junior School</h3>
+                <p>Official school website + parent portal, event calendars, and performance dashboards. Seamless communication hub for educators and families.</p>
+                <a href="http://stmonicakasanje.com" target="_blank" class="btn-primary" style="padding:0.4rem 1.2rem; font-size:0.85rem;">Visit site</a>
+            </div>
+            <div class="card">
+                <img src="trion.png" alt="Trion Safaris" class="project-img" onerror="this.style.display='none'">
+                <h3>Trion Safaris</h3>
+                <p>Tour booking platform with dynamic packages, destination showcases, and integrated trip planning. Built for high conversion and mobile-first UX.</p>
+                <a href="https://trionafricansafaris.com/" target="_blank" class="btn-primary" style="padding:0.4rem 1.2rem; font-size:0.85rem;">Explore</a>
+            </div>
+            <div class="card">
+                <img src="roshana.png" alt="Roshana Enterprises" class="project-img" onerror="this.style.display='none'">
+                <h3>Roshana Enterprises</h3>
+                <p>E‑commerce solution with cart, payment gateway integration, and review system. Fully responsive with admin dashboard.</p>
+          
+                                <a href="https://roshanaenterprise.com/" target="_blank" class="btn-primary" style="padding:0.4rem 1.2rem; font-size:0.85rem;">Explore</a>
+
+            </div>
+
+            <!-- Systems projects without images but clearly categorized -->
+            <!-- <div class="card">
+                <i class="fas fa-truck-fast" style="font-size: 2rem; color:#0ea5e9; margin-bottom:0.5rem; display:inline-block;"></i>
+                <h3>Freightbird · Clearing & Forwarding</h3>
+                <p>End‑to‑end logistics ERP with freight tracking, automated invoicing, customs integration, and real-time status dashboards.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-hotel" style="font-size: 2rem; color:#0ea5e9; margin-bottom:0.5rem;"></i>
+                <h3>Hotel Management ERP</h3>
+                <p>Comprehensive system covering restaurant, bar, accommodation, gym, HR, and accounting modules. Unified operations for hospitality.</p>
+            </div> -->
+            <div class="card">
+                <img src="nono.png" class="project-img" onerror="this.style.display='none'" alt="hospital erp">
+                <h3>Vitalis Sync · Hospital ERP</h3>
+                <p>Integrated patient records, billing, appointments, inventory, and lab workflows. HIPAA‑compliant data handling with audit trails.</p>
+            </div>
+            <div class="card">
+                <img src="hrm9.png" class="project-img" onerror="this.style.display='none'" alt="HRM system">
+                <h3>HRM-9 · Human Resource Suite</h3>
+                <p>Real‑time HRM with biometric attendance, payroll engine, leave management, and performance tracking. Used by mid‑size enterprises.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience refined: links and clean layout -->
+    <section id="experience">
+        <div class="section-title">
+            <h2>Work Experience</h2>
+        </div>
+        <div class="grid-2col">
+            <div class="card">
+                <div class="exp-company"><a href="https://www.sofdas.com" target="_blank">Sofdas Technologies Ltd</a> · Senior Software Engineer</div>
+                <div class="exp-date">Jul 2024 – Present</div>
+                <p>Lead development of enterprise automation solutions; mentor team of 5; implement analytics dashboards and streamline CI/CD pipelines. Improved delivery velocity by 30%.</p>
+            </div>
+            <div class="card">
+                <div class="exp-company"><a href="https://www.mildmay.or.ug" target="_blank">Mildmay Uganda</a> · Database Administrator</div>
+                <div class="exp-date">Feb 2023 – Jun 2024</div>
+                <p>Optimized healthcare databases, ensuring integrity, high availability, and disaster recovery. Automated backup schedules slashing downtime by 25%.</p>
+            </div>
+            <div class="card">
+                <div class="exp-company"><a href="https://datateam.co.ug/" target="_blank">Data Team Uganda Limited</a> · Software Developer</div>
+                <div class="exp-date">Mar 2022 – Jan 2023</div>
+                <p>Developed custom ERP and accounting modules for clients; improved operational efficiency by 20% through performance tuning and scalable architecture.</p>
+            </div>
+            <!-- <div class="card">
+                <div class="exp-company"><a href="https://www.sescotyres.com" target="_blank">Sesco Tyres</a> · Assistant IT Manager</div>
+                <div class="exp-date">Mar 2020 – Mar 2022</div>
+                <p>Managed IT infrastructure, data security, and implemented cost-saving tech solutions, reducing system downtime by 25% while boosting productivity.</p>
+            </div> -->
+        </div>
+    </section>
+
+    <!-- Education background styled -->
+    <section id="education" style="background:#f1f5f9; border-radius: 2rem; margin: 2rem 0;">
+        <div class="section-title">
+            <h2>Education Background</h2>
+        </div>
+        <div class="education-grid">
+            <div class="edu-card">
+                <i class="fas fa-graduation-cap" style="font-size: 2rem; color:#0f172a; margin-bottom:1rem;"></i>
+                <h3>Bachelor of Information Technology</h3>
+                <p><strong>Ndejje University</strong><br>Focus: Software Engineering, Database Systems, Project Management</p>
+            </div>
+            <div class="edu-card">
+                <i class="fas fa-school" style="font-size: 2rem; color:#0f172a; margin-bottom:1rem;"></i>
+                <h3>Advanced Certificate of Education</h3>
+                <p><strong>Cream Land High School</strong><br>Mathematics, Computer Science, Physics – distinction level</p>
+            </div>
+            <div class="edu-card">
+                <i class="fas fa-book-open" style="font-size: 2rem; color:#0f172a; margin-bottom:1rem;"></i>
+                <h3>O-Level Certificate</h3>
+                <p><strong>Buranga Senior Secondary School</strong><br>Foundation in Sciences & Humanities with distinction in ICT</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills enhanced professional badges -->
+    <section id="skills" style="background:#ffffff; border-radius: 2rem; margin-bottom: 1rem;">
+        <div class="section-title">
+            <h2>Technical Arsenal</h2>
+        </div>
+        <div class="skills-cloud">
+            <span class="skill-badge">HTML5 / CSS3</span>
+         <span class="skill-badge">Wordpress</span>
+            <span class="skill-badge">PHP / CodeIgniter</span>
+                <span class="skill-badge">JavaScript (ES6+)</span>
+            <span class="skill-badge">React.js</span>
+            <span class="skill-badge">Node.js</span>
+            <span class="skill-badge">Python</span>
+            <span class="skill-badge">Java / Kotlin</span>
+            <span class="skill-badge">.NET Core</span>
+            <span class="skill-badge">AJAX / REST APIs</span>
+            <span class="skill-badge">ERP Architecture</span>
+            <span class="skill-badge">MySQL / PostgreSQL</span>
+            <span class="skill-badge">Database Optimization</span>
+            <span class="skill-badge">Git & CI/CD</span>
+        </div>
+    </section>
+
+    <!-- Contact modern & minimal, clean -->
+    <section id="contact" style="background: transparent; padding-top: 1rem;">
+        <div class="contact-section" style="background: white; padding: 3rem 2rem; text-align: center;">
+            <div class="section-title">
+                <h2>Let's Connect</h2>
+            </div>
+            <div class="contact-info">
+                <p style="font-size: 1.1rem;">Have a project in mind or looking for a developer? Reach out directly:</p>
+                <a href="mailto:delasiimwe@gmail.com" style="font-size: 1.25rem; font-weight: 600; color:#0ea5e9; text-decoration: none;"><i class="fas fa-envelope"></i> delasiimwe@gmail.com</a>
+                <div class="social-links">
+                    <a href="https://twitter.com/SQLQueryCoach" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/in/asiimwe-delick/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/asiimwedelick" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.facebook.com/asiimwe" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.tiktok.com/@thesqlcoach" target="_blank" aria-label="Tiktok"><i class="fab fa-tiktok"></i></a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<div id="bookingSuccess" style="display: none; position: fixed; bottom: 20px; right: 20px; background: #0ea5e9; color: white; padding: 1rem 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 1000;">
+    <i class="fas fa-check-circle"></i> Meeting scheduled! Check your email for confirmation.
+</div>
+
+<script>
+    // Show success message when coming back from Calendly
+    if(window.location.hash === '#thankyou') {
+        document.getElementById('bookingSuccess').style.display = 'block';
+        setTimeout(function() {
+            document.getElementById('bookingSuccess').style.display = 'none';
+            window.location.hash = '';
+        }, 5000);
+    }
+</script>
+
+<footer>
+    <p>© 2025 Asiimwe Delick — Built with precision and modern standards. All rights reserved.</p>
+</footer>
+
+<!-- Optional minor script for smooth nav highlight -->
+<script>
+    document.querySelectorAll('.nav-links a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if(targetId && targetId.startsWith('#')) {
+                e.preventDefault();
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        });
+    });
+</script>
 </body>
 </html>
