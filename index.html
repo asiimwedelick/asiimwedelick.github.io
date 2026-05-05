@@ -942,13 +942,13 @@ Full-Stack Developer — Specializing in SEO-Optimized Websites, Marketing Funne
 
 <script>
     // Show success message when coming back from Calendly
-    if(window.location.hash === '#thankyou') {
-        document.getElementById('bookingSuccess').style.display = 'block';
-        setTimeout(function() {
-            document.getElementById('bookingSuccess').style.display = 'none';
-            window.location.hash = '';
-        }, 5000);
-    }
+    // if(window.location.hash === '#thankyou') {
+    //     document.getElementById('bookingSuccess').style.display = 'block';
+    //     setTimeout(function() {
+    //         document.getElementById('bookingSuccess').style.display = 'none';
+    //         window.location.hash = '';
+    //     }, 5000);
+    // }
 
 
     
@@ -957,42 +957,47 @@ Full-Stack Developer — Specializing in SEO-Optimized Websites, Marketing Funne
 <footer>
     <p>© 2025 Asiimwe Delick — Built with precision and modern standards. All rights reserved.</p>
 </footer>
-
-<!-- Optional minor script for smooth nav highlight -->
 <script>
-    document.querySelectorAll('.nav-links a').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const targetId = this.getAttribute('href');
-            if(targetId && targetId.startsWith('#')) {
-                e.preventDefault();
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
+
+// Show success message when coming back from Calendly
+if(window.location.hash === '#thankyou') {
+    document.getElementById('bookingSuccess').style.display = 'block';
+    setTimeout(function() {
+        document.getElementById('bookingSuccess').style.display = 'none';
+        window.location.hash = '';
+    }, 5000);
+}
+
+// Smooth scroll for navigation
+document.querySelectorAll('.nav-links a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if(targetId && targetId.startsWith('#')) {
+            e.preventDefault();
+            const targetElement = document.querySelector(targetId);
+            if(targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
-        });
+        }
     });
+});
 
+// Hamburger menu toggle
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
 
-
-
-
-
-    // Hamburger menu toggle
-    const menuToggle = document.getElementById('menuToggle');
-    const navLinks = document.getElementById('navLinks');
-    
+if(menuToggle) {
     menuToggle.addEventListener('click', function() {
         navLinks.classList.toggle('active');
     });
-    
-    // Close menu when a link is clicked
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', function() {
-            navLinks.classList.remove('active');
-        });
-    });
+}
 
+// Close menu when a link is clicked
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', function() {
+        navLinks.classList.remove('active');
+    });
+});
 
 // Project Data
 const projectDetails = {
@@ -1094,7 +1099,6 @@ const modalHTML = `
     <div class="modal-content">
         <span class="modal-close">&times;</span>
         <h2 id="modalTitle"></h2>
-        
         <div class="modal-detail-grid">
             <div>
                 <div class="modal-label">Client</div>
@@ -1105,22 +1109,18 @@ const modalHTML = `
                 <div class="modal-value" id="modalTech"></div>
             </div>
         </div>
-        
         <div>
             <div class="modal-label">Client Requirement</div>
             <div class="modal-value" id="modalRequirement"></div>
         </div>
-        
         <div style="margin-top: 1rem;">
             <div class="modal-label">What I Did</div>
             <div class="modal-value" id="modalWhatIDid"></div>
         </div>
-        
         <div style="margin-top: 1rem;">
             <div class="modal-label">Project URL</div>
             <div class="modal-value"><a href="#" id="modalUrl" target="_blank" style="color:#0ea5e9;">Live Demo →</a></div>
         </div>
-        
         <div style="margin-top: 1rem;">
             <div class="modal-label">Screenshots</div>
             <div class="screenshots-grid" id="modalScreenshots"></div>
@@ -1139,15 +1139,6 @@ const closeBtn = document.querySelector('.modal-close');
 // Store current screenshot list for lightbox navigation
 let currentScreenshots = [];
 let currentIndex = 0;
-
-// Function to open lightbox
-function openLightbox(index) {
-    if(!currentScreenshots.length) return;
-    currentIndex = index;
-    const img = document.getElementById('lightbox-img');
-    img.src = currentScreenshots[currentIndex];
-    document.getElementById('lightbox').style.display = 'flex';
-}
 
 // Function to open project modal
 function openProject(projectKey) {
@@ -1170,7 +1161,7 @@ function openProject(projectKey) {
     // Store screenshots globally for lightbox
     currentScreenshots = project.screenshots.filter(img => img);
     
-    // Screenshots - clicking opens lightbox, not new tab
+    // Screenshots - clicking opens lightbox
     const screenshotsHtml = currentScreenshots.map((img, idx) => 
         `<img src="${img}" class="screenshot-thumb" onclick="openLightbox(${idx})" onerror="this.style.display='none'">`
     ).join('');
@@ -1189,34 +1180,30 @@ window.onclick = function(event) {
     }
 }
 
+// LIGHTBOX FUNCTIONS (defined once only)
+function openLightbox(index) {
+    if(!currentScreenshots.length) return;
+    currentIndex = index;
+    const img = document.getElementById('lightbox-img');
+    if(img) img.src = currentScreenshots[currentIndex];
+    const lightbox = document.getElementById('lightbox');
+    if(lightbox) lightbox.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
 
+function closeLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    if(lightbox) lightbox.style.display = 'none';
+    document.body.style.overflow = '';
+}
 
-// LIGHTBOX FIX - Navigation and Close buttons
+// Lightbox event listeners
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
 const lightboxClose = document.querySelector('.lightbox-close');
 const lightboxPrev = document.querySelector('.lightbox-prev');
 const lightboxNext = document.querySelector('.lightbox-next');
 
-// Store current screenshot list for lightbox navigation
-
-
-// Function to open lightbox
-function openLightbox(index) {
-    if(!currentScreenshots.length) return;
-    currentIndex = index;
-    lightboxImg.src = currentScreenshots[currentIndex];
-    lightbox.style.display = 'flex';
-    document.body.style.overflow = 'hidden'; // Prevent background scrolling
-}
-
-// Function to close lightbox
-function closeLightbox() {
-    lightbox.style.display = 'none';
-    document.body.style.overflow = ''; // Restore scrolling
-}
-
-// Close button click
 if(lightboxClose) {
     lightboxClose.onclick = function(e) {
         e.stopPropagation();
@@ -1224,25 +1211,26 @@ if(lightboxClose) {
     }
 }
 
-// Previous button click
 if(lightboxPrev) {
     lightboxPrev.onclick = function(e) {
         e.stopPropagation();
-        currentIndex = (currentIndex - 1 + currentScreenshots.length) % currentScreenshots.length;
-        lightboxImg.src = currentScreenshots[currentIndex];
+        if(currentScreenshots.length > 0) {
+            currentIndex = (currentIndex - 1 + currentScreenshots.length) % currentScreenshots.length;
+            if(lightboxImg) lightboxImg.src = currentScreenshots[currentIndex];
+        }
     }
 }
 
-// Next button click
 if(lightboxNext) {
     lightboxNext.onclick = function(e) {
         e.stopPropagation();
-        currentIndex = (currentIndex + 1) % currentScreenshots.length;
-        lightboxImg.src = currentScreenshots[currentIndex];
+        if(currentScreenshots.length > 0) {
+            currentIndex = (currentIndex + 1) % currentScreenshots.length;
+            if(lightboxImg) lightboxImg.src = currentScreenshots[currentIndex];
+        }
     }
 }
 
-// Close when clicking on background (not the image)
 if(lightbox) {
     lightbox.onclick = function(e) {
         if(e.target === lightbox) {
@@ -1253,18 +1241,24 @@ if(lightbox) {
 
 // Keyboard navigation
 document.addEventListener('keydown', function(e) {
-    if(lightbox.style.display === 'flex') {
+    const lightboxEl = document.getElementById('lightbox');
+    if(lightboxEl && lightboxEl.style.display === 'flex') {
         if(e.key === 'ArrowLeft') {
-            currentIndex = (currentIndex - 1 + currentScreenshots.length) % currentScreenshots.length;
-            lightboxImg.src = currentScreenshots[currentIndex];
+            if(currentScreenshots.length > 0) {
+                currentIndex = (currentIndex - 1 + currentScreenshots.length) % currentScreenshots.length;
+                if(lightboxImg) lightboxImg.src = currentScreenshots[currentIndex];
+            }
         } else if(e.key === 'ArrowRight') {
-            currentIndex = (currentIndex + 1) % currentScreenshots.length;
-            lightboxImg.src = currentScreenshots[currentIndex];
+            if(currentScreenshots.length > 0) {
+                currentIndex = (currentIndex + 1) % currentScreenshots.length;
+                if(lightboxImg) lightboxImg.src = currentScreenshots[currentIndex];
+            }
         } else if(e.key === 'Escape') {
             closeLightbox();
         }
     }
 });
+
 </script>
 
 
