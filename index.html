@@ -357,6 +357,231 @@
     border-color: #cbd5e1;
 }
 
+/* Mobile menu styles */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+    
+    .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem 0;
+        text-align: center;
+    }
+    
+    .nav-links.active {
+        display: flex;
+    }
+    
+    .header-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+}
+
+.modal-content {
+    background: white;
+    max-width: 800px;
+    width: 90%;
+    margin: 2rem auto;
+    border-radius: 24px;
+    padding: 2rem;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.2s;
+}
+
+.modal-close:hover {
+    color: #0ea5e9;
+}
+
+.modal-img {
+    width: 100%;
+    border-radius: 16px;
+    margin: 1rem 0;
+}
+
+.modal-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.modal-label {
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 0.25rem;
+}
+
+.modal-value {
+    color: #475569;
+}
+
+.screenshots-grid {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.screenshot-thumb {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid #e2e8f0;
+    transition: transform 0.2s;
+}
+
+.screenshot-thumb:hover {
+    transform: scale(1.05);
+    border-color: #0ea5e9;
+}
+
+@media (max-width: 600px) {
+    .modal-detail-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+    .modal-content {
+        padding: 1.5rem;
+    }
+}
+
+
+/* Screenshots grid - responsive */
+.screenshots-grid {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.screenshot-thumb {
+    width: 120px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid #e2e8f0;
+    transition: transform 0.2s;
+}
+
+.screenshot-thumb:hover {
+    transform: scale(1.05);
+    border-color: #0ea5e9;
+}
+
+/* Lightbox Modal */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.95);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.lightbox-prev, .lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+    padding: 20px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox-prev { left: 20px; }
+.lightbox-next { right: 20px; }
+
+.lightbox-prev:hover, .lightbox-next:hover {
+    background: rgba(0,0,0,0.8);
+}
+
+/* Mobile: one image per row */
+@media (max-width: 640px) {
+    .screenshots-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+    .screenshot-thumb {
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -366,8 +591,12 @@
         <div class="logo">
             <h1>ASIIMWE DELICK</h1>
         </div>
-        <nav class="nav-links">
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <nav class="nav-links" id="navLinks">
             <a href="#about">About</a>
+            <a href="#services">Services</a>
             <a href="#projects">Projects</a>
             <a href="#experience">Experience</a>
             <a href="#skills">Skills</a>
@@ -379,7 +608,7 @@
 <!-- Hero Section with professional tone -->
 <section class="hero">
     <div class="hero-content">
-        <img src="1_7_pBBFFbA6LPV0TI76vsoQ.jpg" alt="Asiimwe Delick portrait" class="profile-img" onerror="this.src='https://via.placeholder.com/150?text=AD'">
+        <img src="profile.png" alt="Asiimwe Delick portrait" class="profile-img" onerror="this.src='https://via.placeholder.com/150?text=AD'">
         <h1>Architecting Digital Solutions</h1>
         <div class="hero-tagline">
 Full-Stack Developer — Specializing in SEO-Optimized Websites, Marketing Funnels & Scalable Web Systems        </div>
@@ -463,92 +692,122 @@ Full-Stack Developer — Specializing in SEO-Optimized Websites, Marketing Funne
 </section>
 
     <!-- Projects section upgraded with imagery + descriptions -->
-    <section id="projects">
-        <div class="section-title">
-            <h2>Featured Projects</h2>
-        </div>
-        <div class="grid-2col">
-            <!-- Website projects -->
+<section id="projects">
+    <div class="section-title">
+        <h2>Featured Projects</h2>
+    </div>
+    <div class="grid-2col">
 
-    
-
-          <div class="card">
-    <img src="datateam.png" alt="Data Team Uganda" class="project-img" onerror="this.style.display='none'">
-    <h3>Data Team Uganda</h3>
-    <p>Corporate website with a structured product catalog, inquiry system, and customer-focused layout. Designed to improve visibility and streamline client inquiries for faster lead conversion.</p>
-    <a href="https://www.datateam.co.ug/" target="_blank" class="btn-primary" style="padding:0.4rem 1.2rem; font-size:0.85rem;">
-        <i class="fas fa-external-link-alt"></i> Live demo
-    </a>
-</div>
-
-<div class="card">
-    <img src="rukungiridistrict.png" alt="Rukungiri District Website" class="project-img" onerror="this.style.display='none'">
-    <h3>Rukungiri District Local Government Website</h3>
-    <p>Government information platform built to improve accessibility of public services, announcements, and administrative information with a clean, mobile-friendly interface.</p>
-    <a href="https://rukungiri.go.ug/" target="_blank" class="btn-primary" style="padding:0.4rem 1.2rem; font-size:0.85rem;">
-        <i class="fas fa-external-link-alt"></i> Live demo
-    </a>
-</div>
-
-<div class="card">
-    <img src="yopersh.png" alt="Your Personal Shopper" class="project-img" onerror="this.style.display='none'">
-    <h3>Your Personal Shopper</h3>
-<p>Personal shopping service platform featuring product listings, customer inquiries, and a simple ordering flow to help users request and manage purchases efficiently.</p>    <a href="https://shopwithyopersh.com/" target="_blank" class="btn-primary" style="padding:0.4rem 1.2rem; font-size:0.85rem;">
-        <i class="fas fa-external-link-alt"></i> Live demo
-    </a>
-</div>
-
-
-            <div class="card">
-                <img src="sesco.png" alt="Sesco Tyres" class="project-img" onerror="this.style.display='none'">
-                <h3>Sesco Tyres Website</h3>
-                <p>Modern responsive website with product catalog, online inquiry system, and integrated customer portal. Improved lead generation by 40%.</p>
-                <a href="https://www.sescotyres.com" target="_blank" class="btn-primary" style="padding:0.4rem 1.2rem; font-size:0.85rem;"><i class="fas fa-external-link-alt"></i> Live demo</a>
-            </div>
-            <div class="card">
-                <img src="stmonica.png" alt="St Monica School" class="project-img" onerror="this.style.display='none'">
-                <h3>St Monica Junior School</h3>
-                <p>Official school website + parent portal, event calendars, and performance dashboards. Seamless communication hub for educators and families.</p>
-                <a href="http://stmonicakasanje.com" target="_blank" class="btn-primary" style="padding:0.4rem 1.2rem; font-size:0.85rem;">Visit site</a>
-            </div>
-            <div class="card">
-                <img src="trion.png" alt="Trion Safaris" class="project-img" onerror="this.style.display='none'">
-                <h3>Trion Safaris</h3>
-                <p>Tour booking platform with dynamic packages, destination showcases, and integrated trip planning. Built for high conversion and mobile-first UX.</p>
-                <a href="https://trionafricansafaris.com/" target="_blank" class="btn-primary" style="padding:0.4rem 1.2rem; font-size:0.85rem;">Explore</a>
-            </div>
-            <div class="card">
-                <img src="roshana.png" alt="Roshana Enterprises" class="project-img" onerror="this.style.display='none'">
-                <h3>Roshana Enterprises</h3>
-                <p>E‑commerce solution with cart, payment gateway integration, and review system. Fully responsive with admin dashboard.</p>
-          
-                                <a href="https://roshanaenterprise.com/" target="_blank" class="btn-primary" style="padding:0.4rem 1.2rem; font-size:0.85rem;">Explore</a>
-
-            </div>
-
-            <!-- Systems projects without images but clearly categorized -->
-            <!-- <div class="card">
-                <i class="fas fa-truck-fast" style="font-size: 2rem; color:#0ea5e9; margin-bottom:0.5rem; display:inline-block;"></i>
-                <h3>Freightbird · Clearing & Forwarding</h3>
-                <p>End‑to‑end logistics ERP with freight tracking, automated invoicing, customs integration, and real-time status dashboards.</p>
-            </div>
-            <div class="card">
-                <i class="fas fa-hotel" style="font-size: 2rem; color:#0ea5e9; margin-bottom:0.5rem;"></i>
-                <h3>Hotel Management ERP</h3>
-                <p>Comprehensive system covering restaurant, bar, accommodation, gym, HR, and accounting modules. Unified operations for hospitality.</p>
-            </div> -->
-            <div class="card">
-                <img src="nono.png" class="project-img" onerror="this.style.display='none'" alt="hospital erp">
-                <h3>Vitalis Sync · Hospital ERP</h3>
-                <p>Integrated patient records, billing, appointments, inventory, and lab workflows. HIPAA‑compliant data handling with audit trails.</p>
-            </div>
-            <div class="card">
-                <img src="hrm9.png" class="project-img" onerror="this.style.display='none'" alt="HRM system">
-                <h3>HRM-9 · Human Resource Suite</h3>
-                <p>Real‑time HRM with biometric attendance, payroll engine, leave management, and performance tracking. Used by mid‑size enterprises.</p>
+        <!-- Data Team Uganda -->
+        <div class="card">
+            <img src="datateam.png" alt="Data Team Uganda" class="project-img" onerror="this.style.display='none'">
+      
+            <p>Web design and development for an Information Technology firm</p>
+            <div style="display: flex; gap: 0.5rem; margin-top: 1rem; flex-wrap: wrap;">
+                <button onclick="openProject('datateam')" class="btn-primary" style="padding:0.4rem 1.2rem; font-size:0.85rem; background:#334155;">
+                    <i class="fas fa-info-circle"></i> View Details
+                </button>
             </div>
         </div>
-    </section>
+
+        <!-- Rukungiri District -->
+        <div class="card">
+            <img src="rukungiridistrict.png" alt="Rukungiri District Website" class="project-img" onerror="this.style.display='none'">
+        
+            <p>Website design and development for a local government</p>
+            <div style="display: flex; gap: 0.5rem; margin-top: 1rem; flex-wrap: wrap;">
+                <button onclick="openProject('rukungiri')" class="btn-primary" style="padding:0.4rem 1.2rem; font-size:0.85rem; background:#334155;">
+                    <i class="fas fa-info-circle"></i> View Details
+                </button>
+            </div>
+        </div>
+
+        <!-- Your Personal Shopper -->
+        <div class="card">
+            <img src="yopersh.png" alt="Your Personal Shopper" class="project-img" onerror="this.style.display='none'">
+           
+            <p>Web design for for a logistics firm</p>
+            <div style="display: flex; gap: 0.5rem; margin-top: 1rem; flex-wrap: wrap;">
+                <button onclick="openProject('yopersh')" class="btn-primary" style="padding:0.4rem 1.2rem; font-size:0.85rem; background:#334155;">
+                    <i class="fas fa-info-circle"></i> View Details
+                </button>
+            </div>
+        </div>
+
+        <!-- Sesco Tyres -->
+        <div class="card">
+            <img src="sesco.png" alt="Sesco Tyres" class="project-img" onerror="this.style.display='none'">
+  
+            <p>Website design and development for a tyre company</p>
+            <div style="display: flex; gap: 0.5rem; margin-top: 1rem; flex-wrap: wrap;">
+                <button onclick="openProject('sesco')" class="btn-primary" style="padding:0.4rem 1.2rem; font-size:0.85rem; background:#334155;">
+                    <i class="fas fa-info-circle"></i> View Details
+                </button>
+            </div>
+        </div>
+
+        <!-- St Monica Junior School -->
+        <div class="card">
+            <img src="stmonica.png" alt="St Monica School" class="project-img" onerror="this.style.display='none'">
+       
+            <p>Website design and development for a primary school </p>
+            <div style="display: flex; gap: 0.5rem; margin-top: 1rem; flex-wrap: wrap;">
+                <button onclick="openProject('stmonica')" class="btn-primary" style="padding:0.4rem 1.2rem; font-size:0.85rem; background:#334155;">
+                    <i class="fas fa-info-circle"></i> View Details
+                </button>
+            </div>
+        </div>
+
+        <!-- Trion Safaris -->
+        <div class="card">
+            <img src="trion.png" alt="Trion Safaris" class="project-img" onerror="this.style.display='none'">
+        
+            <p>Website design for tours and travel (safaris) company</p>
+            <div style="display: flex; gap: 0.5rem; margin-top: 1rem; flex-wrap: wrap;">
+                <button onclick="openProject('trion')" class="btn-primary" style="padding:0.4rem 1.2rem; font-size:0.85rem; background:#334155;">
+                    <i class="fas fa-info-circle"></i> View Details
+                </button>
+            </div>
+        </div>
+
+        <!-- Roshana Enterprises -->
+        <div class="card">
+            <img src="roshana.png" alt="Roshana Enterprises" class="project-img" onerror="this.style.display='none'">
+        
+            <p>Website design for a clearing and forwarding company</p>
+            <div style="display: flex; gap: 0.5rem; margin-top: 1rem; flex-wrap: wrap;">
+                <button onclick="openProject('roshana')" class="btn-primary" style="padding:0.4rem 1.2rem; font-size:0.85rem; background:#334155;">
+                    <i class="fas fa-info-circle"></i> View Details
+                </button>
+            </div>
+        </div>
+
+        <!-- Vitalis Sync · Hospital ERP -->
+        <div class="card">
+            <img src="nono.png" class="project-img" onerror="this.style.display='none'" alt="hospital erp">
+           
+            <p>A hospital ERP system</p>
+            <div style="display: flex; gap: 0.5rem; margin-top: 1rem; flex-wrap: wrap;">
+                <button onclick="openProject('vitalis')" class="btn-primary" style="padding:0.4rem 1.2rem; font-size:0.85rem; background:#334155;">
+                    <i class="fas fa-info-circle"></i> View Details
+                </button>
+            </div>
+        </div>
+
+        <!-- HRM-9 · Human Resource Suite -->
+        <div class="card">
+            <img src="hrm9.png" class="project-img" onerror="this.style.display='none'" alt="HRM system">
+   
+            <p>An HR management system</p>
+            <div style="display: flex; gap: 0.5rem; margin-top: 1rem; flex-wrap: wrap;">
+                <button onclick="openProject('hrm9')" class="btn-primary" style="padding:0.4rem 1.2rem; font-size:0.85rem; background:#334155;">
+                    <i class="fas fa-info-circle"></i> View Details
+                </button>
+            </div>
+        </div>
+
+    </div>
+</section>
 
     <!-- Experience refined: links and clean layout -->
     <section id="experience">
@@ -651,6 +910,14 @@ Full-Stack Developer — Specializing in SEO-Optimized Websites, Marketing Funne
     <i class="fas fa-check-circle"></i> Meeting scheduled! Check your email for confirmation.
 </div>
 
+<!-- Lightbox Modal -->
+<div id="lightbox" class="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <span class="lightbox-prev">&#10094;</span>
+    <span class="lightbox-next">&#10095;</span>
+    <img id="lightbox-img" src="">
+</div>
+
 <script>
     // Show success message when coming back from Calendly
     if(window.location.hash === '#thankyou') {
@@ -660,6 +927,9 @@ Full-Stack Developer — Specializing in SEO-Optimized Websites, Marketing Funne
             window.location.hash = '';
         }, 5000);
     }
+
+
+    
 </script>
 
 <footer>
@@ -680,6 +950,302 @@ Full-Stack Developer — Specializing in SEO-Optimized Websites, Marketing Funne
             }
         });
     });
+
+
+
+
+
+
+    // Hamburger menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    
+    menuToggle.addEventListener('click', function() {
+        navLinks.classList.toggle('active');
+    });
+    
+    // Close menu when a link is clicked
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', function() {
+            navLinks.classList.remove('active');
+        });
+    });
+
+
+// Project Data
+const projectDetails = {
+    "datateam": {
+    
+        client: "Data Team Uganda Limited",
+        requirement: "The client needed a professional corporate website to represent their IT consultancy services, improve online presence, and clearly communicate their solutions to potential clients. The existing online presence lacked a modern, structured, and user friendly interface suitable for attracting enterprise and institutional customers.",
+        whatIDid: "I developed and structured a responsive corporate website that presents the company’s services, portfolio, and expertise in a clear and professional way. The website was designed to be mobile-friendly, easy to navigate, and aligned with modern UI/UX standards. Key sections such as services, company profile, and contact information were organized to improve clarity and user engagement. ",
+        url: "https://www.datateam.co.ug/",
+        technologies: ["WordPress", "PHP", "MySQL", "HTML5/CSS3", "JavaScript"],
+        screenshots: ["datateam.png", "dt1.png","dt2.png","dt3.png","dt4.png","dt5.png"],
+        additionalImages: []
+    },
+    "rukungiri": {
+    
+        client: "Rukungiri District Local Government",
+        requirement: "The Rukungiri District Local Government needed a centralized, easy-to-manage website to improve public access to information and streamline content updates across departments. Their previous setup made it difficult to keep information current, and non-technical staff struggled to manage updates efficiently.",
+        whatIDid: "I developed a custom, scalable government website with a fully integrated backend admin panel. The system allows authorized staff to easily manage content such as announcements, departments, documents, and public notices without technical expertise. The platform was designed to be fast, mobile-friendly, and accessible even for users on low-bandwidth connections. ",
+        url: "https://rukungiri.go.ug/",
+        technologies: ["HTML5", "Javascript","PHP", "MySQL", "css3"],
+        screenshots: ["rukungiridistrict.png","r1.png","r2.png","r3.png","r4.png","r5.png","r6.png","r7.png"],
+        additionalImages: []
+    },
+    "yopersh": {
+        title: "A Branding website for a logistics company",
+        client: "",
+        requirement: "The client needed a professional brand website to clearly explain their personal shopping service, build trust with potential customers, and improve their online presence. The previous online communication lacked a structured platform that could properly present how the service works and how clients can engage with it. ",
+        whatIDid: "I developed a clean, responsive brand website that communicates the company’s personal shopping service in a simple and trustworthy way. The website focuses on explaining how clients can place orders, the process involved, and how deliveries are handled. It is designed with a strong emphasis on clarity, usability, and mobile responsiveness to ensure a smooth user experience across all devices. ",
+        // url: "https://shopwithyopersh.com/",
+        technologies: ["WordPress", "JavaScript", "PHP", "MySQL"],
+        screenshots: ["yopersh.png","y1.png","y2.png","y3.png","y4.png","y5.png","y6.png",],
+        additionalImages: []
+    },
+    "sesco": {
+        title: "A website for a Tyre importing company",
+        client: "",
+        requirement: "Modern website with product catalog and customer inquiry system to boost lead generation.",
+        whatIDid: "Built responsive product showcase, integrated inquiry forms, and customer portal. Improved lead generation by 40%.",
+        // url: "https://www.sescotyres.com",
+        technologies: ["PHP", "CodeIgniter", "MySQL", "Bootstrap", "JavaScript"],
+        screenshots: ["sesco.png"],
+        additionalImages: []
+    },
+    "stmonica": {
+        title: "Primary school website",
+        client: "St Monica Junior School, Kasaje",
+        requirement: "The client needed a school website to showcase academic programs, co-curricular activities, and provide important information for parents and visitors. ",
+        whatIDid: "I developed a responsive website with structured pages for academics, sports, and communication. The site is optimized for mobile, tablet, and desktop users. ",
+        url: "http://stmonicakasanje.com",
+        technologies: ["WordPress", "PHP", "MySQL", "Chart.js"],
+        screenshots: ["stmonica.png","m1.png","m2.png","m3.png","m4.png","m5.png","m6.png"],
+        additionalImages: []
+    },
+    "trion": {
+        title: "Tours and travel website",
+        client: "",
+        requirement: "Tour booking platform with dynamic packages and destination showcases.",
+        whatIDid: "Built a high-conversion travel website with package management, inquiry system, mobile-first responsive design, improved SEO and intergrated the payment method",
+        url: "",
+        technologies: ["WordPress", "JavaScript", "PHP", "MySQL"],
+        screenshots: ["t3.png","t1.png","t2.png","t4.png"],
+        additionalImages: []
+    },
+    "roshana": {
+   
+        client: "Roshana Enterprises",
+        requirement: "The client needed a professional corporate website to represent their diversified business operations, which include trading, import/export, consultancy, and general business services. The goal was to create a structured online presence that clearly communicates their company profile, services, and credibility to potential partners and customers. ",
+        whatIDid: "I developed a responsive corporate website designed to present the company’s wide range of business activities in a clear and organized structure. The website focuses on improving brand credibility, simplifying service presentation, and ensuring easy navigation across all devices. The design supports both informational and business communication needs, helping the company establish a stronger digital presence. ",
+        url: "https://roshanaenterprise.com/",
+        technologies: ["PHP", "CodeIgniter", "MySQL", "Jquery", "HTML5","CSS3"],
+        screenshots: ["roshana.png", "s1.png","s2.png","s3.png","s4.png","s5.png","s6.png"],
+        additionalImages: []
+    },
+    "vitalis": {
+        title: "Vitalis Sync · Hospital ERP",
+        client: "Healthcare Provider",
+        requirement: "Integrated hospital management system for patient records, billing, appointments, inventory, and lab workflows.",
+        whatIDid: "Built comprehensive ERP with patient management, appointment scheduling, billing system, inventory tracking, and lab integration. HIPAA-compliant data handling.",
+        url: "#",
+        technologies: ["PHP", "CodeIgniter", "MySQL", "Bootstrap", "JavaScript"],
+        screenshots: ["nono.png"],
+        additionalImages: []
+    },
+    "hrm9": {
+        title: "HRM-9 · Human Resource Suite",
+        client: "Mid-size Enterprises",
+        requirement: "Complete HR management system with biometric integration and payroll engine.",
+        whatIDid: "Created real-time HRM system with employee records, biometric attendance, automated payroll, leave management, and performance tracking.",
+        url: "#",
+        technologies: ["PHP", "CodeIgniter", "MySQL", "JavaScript", "Biometric SDK"],
+        screenshots: ["hrm9.png"],
+        additionalImages: []
+    }
+};
+
+// Modal HTML
+const modalHTML = `
+<div id="projectModal" class="modal">
+    <div class="modal-content">
+        <span class="modal-close">&times;</span>
+        <h2 id="modalTitle"></h2>
+        
+        <div class="modal-detail-grid">
+            <div>
+                <div class="modal-label">Client</div>
+                <div class="modal-value" id="modalClient"></div>
+            </div>
+            <div>
+                <div class="modal-label">Technologies</div>
+                <div class="modal-value" id="modalTech"></div>
+            </div>
+        </div>
+        
+        <div>
+            <div class="modal-label">Client Requirement</div>
+            <div class="modal-value" id="modalRequirement"></div>
+        </div>
+        
+        <div style="margin-top: 1rem;">
+            <div class="modal-label">What I Did</div>
+            <div class="modal-value" id="modalWhatIDid"></div>
+        </div>
+        
+        <div style="margin-top: 1rem;">
+            <div class="modal-label">Project URL</div>
+            <div class="modal-value"><a href="#" id="modalUrl" target="_blank" style="color:#0ea5e9;">Live Demo →</a></div>
+        </div>
+        
+        <div style="margin-top: 1rem;">
+            <div class="modal-label">Screenshots</div>
+            <div class="screenshots-grid" id="modalScreenshots"></div>
+        </div>
+    </div>
+</div>
+`;
+
+// Add modal to body
+document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+// Get modal elements
+const modal = document.getElementById('projectModal');
+const closeBtn = document.querySelector('.modal-close');
+
+// Store current screenshot list for lightbox navigation
+let currentScreenshots = [];
+let currentIndex = 0;
+
+// Function to open lightbox
+function openLightbox(index) {
+    if(!currentScreenshots.length) return;
+    currentIndex = index;
+    const img = document.getElementById('lightbox-img');
+    img.src = currentScreenshots[currentIndex];
+    document.getElementById('lightbox').style.display = 'flex';
+}
+
+// Function to open project modal
+function openProject(projectKey) {
+    const project = projectDetails[projectKey];
+    if(!project) return;
+    
+    document.getElementById('modalTitle').textContent = project.title;
+    document.getElementById('modalClient').textContent = project.client;
+    document.getElementById('modalRequirement').textContent = project.requirement;
+    document.getElementById('modalWhatIDid').textContent = project.whatIDid;
+    document.getElementById('modalUrl').href = project.url;
+    document.getElementById('modalUrl').textContent = project.url === '#' ? 'Coming soon' : 'Live Demo →';
+    
+    // Technologies as badges
+    const techHtml = project.technologies.map(tech => 
+        `<span style="background:#e0f2fe; padding:0.2rem 0.6rem; border-radius:20px; font-size:0.8rem; margin-right:0.4rem; display:inline-block; margin-bottom:0.3rem;">${tech}</span>`
+    ).join('');
+    document.getElementById('modalTech').innerHTML = techHtml;
+    
+    // Store screenshots globally for lightbox
+    currentScreenshots = project.screenshots.filter(img => img);
+    
+    // Screenshots - clicking opens lightbox, not new tab
+    const screenshotsHtml = currentScreenshots.map((img, idx) => 
+        `<img src="${img}" class="screenshot-thumb" onclick="openLightbox(${idx})" onerror="this.style.display='none'">`
+    ).join('');
+    document.getElementById('modalScreenshots').innerHTML = screenshotsHtml || '<p>No additional screenshots available</p>';
+    
+    modal.style.display = 'flex';
+}
+
+// Close modal
+closeBtn.onclick = function() {
+    modal.style.display = 'none';
+}
+window.onclick = function(event) {
+    if(event.target === modal) {
+        modal.style.display = 'none';
+    }
+}
+
+
+
+// LIGHTBOX FIX - Navigation and Close buttons
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const lightboxClose = document.querySelector('.lightbox-close');
+const lightboxPrev = document.querySelector('.lightbox-prev');
+const lightboxNext = document.querySelector('.lightbox-next');
+
+// Store current screenshot list for lightbox navigation
+
+
+// Function to open lightbox
+function openLightbox(index) {
+    if(!currentScreenshots.length) return;
+    currentIndex = index;
+    lightboxImg.src = currentScreenshots[currentIndex];
+    lightbox.style.display = 'flex';
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+}
+
+// Function to close lightbox
+function closeLightbox() {
+    lightbox.style.display = 'none';
+    document.body.style.overflow = ''; // Restore scrolling
+}
+
+// Close button click
+if(lightboxClose) {
+    lightboxClose.onclick = function(e) {
+        e.stopPropagation();
+        closeLightbox();
+    }
+}
+
+// Previous button click
+if(lightboxPrev) {
+    lightboxPrev.onclick = function(e) {
+        e.stopPropagation();
+        currentIndex = (currentIndex - 1 + currentScreenshots.length) % currentScreenshots.length;
+        lightboxImg.src = currentScreenshots[currentIndex];
+    }
+}
+
+// Next button click
+if(lightboxNext) {
+    lightboxNext.onclick = function(e) {
+        e.stopPropagation();
+        currentIndex = (currentIndex + 1) % currentScreenshots.length;
+        lightboxImg.src = currentScreenshots[currentIndex];
+    }
+}
+
+// Close when clicking on background (not the image)
+if(lightbox) {
+    lightbox.onclick = function(e) {
+        if(e.target === lightbox) {
+            closeLightbox();
+        }
+    }
+}
+
+// Keyboard navigation
+document.addEventListener('keydown', function(e) {
+    if(lightbox.style.display === 'flex') {
+        if(e.key === 'ArrowLeft') {
+            currentIndex = (currentIndex - 1 + currentScreenshots.length) % currentScreenshots.length;
+            lightboxImg.src = currentScreenshots[currentIndex];
+        } else if(e.key === 'ArrowRight') {
+            currentIndex = (currentIndex + 1) % currentScreenshots.length;
+            lightboxImg.src = currentScreenshots[currentIndex];
+        } else if(e.key === 'Escape') {
+            closeLightbox();
+        }
+    }
+});
 </script>
+
+
+
 </body>
 </html>
